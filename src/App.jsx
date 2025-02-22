@@ -16,7 +16,7 @@ function App() {
         <Routes>
           <Route path='/' element={<StudentTable/>}></Route>
           <Route path='/create' element={<CreateStudent/>}></Route>
-          <Route path='/create/edit' element={<EditStudent/>}></Route>
+          <Route path='/create/edit/:studentid' element={<EditStudent/>}></Route>
           <Route path='/create/edit/view/:studentid' element={<ViewDetails />} />
 
 

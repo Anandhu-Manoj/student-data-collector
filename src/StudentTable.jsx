@@ -20,8 +20,26 @@ function StudentTable() {
       navigate(`/create/edit/view/${studentid}`);
     };
     
-  
+    const editDetails = (studentid) => {
+      navigate(`/create/edit/${studentid}`);
+    };
+    const onDelete=(id)=>{
+      if(window.confirm("Are you sure u want to delete?")){
+        fetch(`http://localhost:3000/student/${id}`, {
+          method: "DELETE",
+          headers: { "Content-Type": "application/json" },
+         
+        })
+          .then((res) => {
+            alert("Student data successfully removed");
+           window.location.reload();
+          })
+          .catch((err) => console.log(err));
+      };
+      }
 
+    
+  
   return (
     <div>
       <center>
@@ -80,6 +98,7 @@ function StudentTable() {
                     View
                   </button>
                   <button
+                  onClick={()=>editDetails(item.id)}
                     style={{
                       margin: "5px",
                       backgroundColor: "blueviolet",
@@ -92,6 +111,7 @@ function StudentTable() {
                     Edit
                   </button>
                   <button
+                  
                     style={{
                       margin: "5px",
                       backgroundColor: "orangered",
@@ -101,6 +121,8 @@ function StudentTable() {
                       border: "0px",
                       color: "white",
                     }}
+                    onClick={()=>onDelete(item.id)}
+
                   >
                     Delete
                   </button>
